@@ -52,8 +52,10 @@ public class Main {
         final Pattern pattern = Pattern.compile(regexPattern);
         final Matcher matcher = pattern.matcher(line);
 
-        while (matcher.find()) {
-            foundDigits.add(matcher.group());
+        if(matcher.find()) {
+            do {
+                foundDigits.add(matcher.group());
+            } while(matcher.find(matcher.start()+1));
         }
 
         return foundDigits.stream()
