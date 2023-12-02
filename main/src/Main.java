@@ -52,10 +52,10 @@ public class Main {
         final Pattern pattern = Pattern.compile(regexPattern);
         final Matcher matcher = pattern.matcher(line);
 
-        if(matcher.find()) {
+        if (matcher.find()) {
             do {
                 foundDigits.add(matcher.group());
-            } while(matcher.find(matcher.start()+1));
+            } while (matcher.find(matcher.start() + 1));
         }
 
         return foundDigits.stream()
@@ -63,6 +63,13 @@ public class Main {
                 .toList();
     }
 
+    /**
+     * Turns a possibly magical wording into a number - a neat little trick that elves have learned over time to perform
+     * with magic dust!
+     *
+     * @param digit needs a string digit to transform it into a number.
+     * @return A-ha! Something that we can interpret!
+     */
     private static Integer translateDigitToInteger(final String digit) {
         try {
             return Integer.parseInt(digit);
@@ -72,7 +79,7 @@ public class Main {
     }
 
     /**
-     * Reads the magical input and returns these so far intelligible... things.
+     * Reads the magical input and returns these so far unintelligible... things.
      *
      * @return a list of mystical lines. Who knows what values they hold?
      */
@@ -88,6 +95,9 @@ public class Main {
         }
     }
 
+    /**
+     * Textbook representation of what the elves consider to be their numbers. Luckily, we share this understanding.
+     */
     private enum Digit {
         ZERO(0),
         ONE(1),
@@ -100,7 +110,7 @@ public class Main {
         EIGHT(8),
         NINE(9);
 
-        private int integerRepresentation;
+        private final int integerRepresentation;
 
         Digit(final int integerRepresentation) {
             this.integerRepresentation = integerRepresentation;
